@@ -1,0 +1,7 @@
+name: CustomHelp
+version: 1.0-SNAPSHOT
+main: com.geronimomc.CustomHelp
+api-version: 1.15
+authors: [Simon_Xz]
+description: Custom Help
+website: https://discord.geronimomc.com
