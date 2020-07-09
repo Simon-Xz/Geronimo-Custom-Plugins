@@ -5,3 +5,8 @@ api-version: 1.15
 authors: [Simon_Xz]
 description: Custom Help
 website: https://discord.geronimomc.com
+
+commands:
+  help:
+    description: Shows the custom help
+    usage: /<command>
