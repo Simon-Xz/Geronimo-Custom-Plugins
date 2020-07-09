@@ -1,6 +1,6 @@
 name: CustomHelp
 version: ${project.version}
-main: com.geronimomc.CustomHelp
+main: com.geronimomc.Main
 api-version: 1.15
 authors: [Simon_Xz]
 description: Custom Help

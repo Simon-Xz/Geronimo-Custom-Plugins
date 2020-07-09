@@ -1,27 +1,20 @@
 package com.geronimomc;
 
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 
-public final class CustomHelp extends JavaPlugin {
-
-    @Override
-    public void onEnable() {
-        getLogger().info("");
-        // Plugin startup logic
-
-    }
-
-    @Override
-    public void onDisable() {
-        getLogger().info("");
-        // Plugin shutdown logic
-    }
+public class CustomHelp implements Listener, CommandExecutor {
 
 
-    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-
+        if (sender instanceof Player) {
+            Player p = (Player) sender;
+            p.sendMessage("Testing");
+        }
+        return false;
     }
+
 }
