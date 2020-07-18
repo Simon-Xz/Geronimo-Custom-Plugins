@@ -1,7 +1,7 @@
 name: CustomHelp
 version: ${project.version}
 main: com.geronimomc.Main
-api-version: 1.15
+api-version: 1.14
 authors: [Simon_Xz]
 description: Custom Help
 website: https://discord.geronimomc.com
@@ -9,4 +9,7 @@ website: https://discord.geronimomc.com
 commands:
   help:
     description: Shows the custom help
+    usage: /<command>
+  hreload:
+    description: Reloads the config
     usage: /<command>
