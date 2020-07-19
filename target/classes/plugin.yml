@@ -10,6 +10,6 @@ commands:
   help:
     description: Shows the custom help
     usage: /<command>
-  hreload:
+  grcore:
     description: Reloads the config
     usage: /<command>
