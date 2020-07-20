@@ -3,6 +3,7 @@ package com.geronimomc;
 import com.geronimomc.commands.CustomHelp;
 import com.geronimomc.commands.Reload;
 import com.geronimomc.files.CustomConfig;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -15,6 +16,7 @@ public final class Main extends JavaPlugin {
         //Custom Commands
         this.getCommand("help").setExecutor(new CustomHelp());
         this.getCommand("grcore").setExecutor(new Reload());
+        Bukkit.getServer().getPluginManager().registerEvents(new LoginMessage(), this);
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -28,7 +30,7 @@ public final class Main extends JavaPlugin {
         CustomConfig.get().addDefault("help-line-four", "&6* &eFound a server issue/bug");
         CustomConfig.get().addDefault("help-line-four-hover", "&6Click to select!");
         CustomConfig.get().addDefault("help-line-four-clickevent", "https://discord.geronimomc.com");
-        CustomConfig.get().addDefault("help-line-five", "&6* &e Report rule breakers");
+        CustomConfig.get().addDefault("help-line-five", "&6* &eReport rule breakers");
         CustomConfig.get().addDefault("help-line-five-hover", "&6Click to select!");
         CustomConfig.get().addDefault("help-line-five-clickevent", "https://discord.geronimomc.com");
         CustomConfig.get().addDefault("help-line-six", "&6* &eAsk a payment question");

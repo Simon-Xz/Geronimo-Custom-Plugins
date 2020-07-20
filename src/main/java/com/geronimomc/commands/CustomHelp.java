@@ -31,23 +31,41 @@ public class CustomHelp implements Listener, CommandExecutor {
             String help1hover = CustomConfig.get().getString("help-line-four-hover").replace('&', '§');
             String help1click = CustomConfig.get().getString("help-line-four-clickevent").replace('&', '§');
 
-            //String help2 = CustomConfig.get().getString("help-line-four");
-            //String help2hover = CustomConfig.get().getString("help-line-four-hover");
-            //String help2click = CustomConfig.get().getString("help-line-four-clickevent");
+            String help2 = CustomConfig.get().getString("help-line-five").replace('&', '§');
+            String help2hover = CustomConfig.get().getString("help-line-five-hover").replace('&', '§');
+            String help2click = CustomConfig.get().getString("help-line-five-clickevent").replace('&', '§');
 
-            //String help3 = CustomConfig.get().getString("help-line-four");
-            //String help3hover = CustomConfig.get().getString("help-line-four-hover");
-            //String help3click = CustomConfig.get().getString("help-line-four-clickevent");
+            String help3 = CustomConfig.get().getString("help-line-six").replace('&', '§');
+            String help3hover = CustomConfig.get().getString("help-line-six-hover").replace('&', '§');
+            String help3click = CustomConfig.get().getString("help-line-six-clickevent").replace('&', '§');
 
-            //String help4 = CustomConfig.get().getString("help-line-four");
-            //String help4hover = CustomConfig.get().getString("help-line-four-hover");
-            //String help4click = CustomConfig.get().getString("help-line-four-clickevent");
+            String help4 = CustomConfig.get().getString("help-line-eight").replace('&', '§');
+            String help4hover = CustomConfig.get().getString("help-line-eight-hover").replace('&', '§');
+            String help4click = CustomConfig.get().getString("help-line-eight-clickevent").replace('&', '§');
 
             TextComponent help1message = new TextComponent(help1);
             help1message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, help1click));
             help1message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(help1hover).create()));
 
+            TextComponent help2message = new TextComponent(help2);
+            help2message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, help2click));
+            help2message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(help2hover).create()));
+
+            TextComponent help3message = new TextComponent(help3);
+            help3message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, help3click));
+            help3message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(help3hover).create()));
+
+            TextComponent help4message = new TextComponent(help4);
+            help4message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, help4click));
+            help4message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(help4hover).create()));
+
+
+
             p.spigot().sendMessage(help1message);
+            p.spigot().sendMessage(help2message);
+            p.spigot().sendMessage(help3message);
+            p.sendMessage(CustomConfig.get().getString("help-line-seven").replace('&', '§'));
+            p.spigot().sendMessage(help4message);
 
 
         }
