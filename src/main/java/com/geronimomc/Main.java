@@ -16,7 +16,11 @@ public final class Main extends JavaPlugin {
         //Custom Commands
         this.getCommand("help").setExecutor(new CustomHelp());
         this.getCommand("grcore").setExecutor(new Reload());
+
+        //Join Leave messages ect
         Bukkit.getServer().getPluginManager().registerEvents(new LoginMessage(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
+
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
