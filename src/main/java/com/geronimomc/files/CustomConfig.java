@@ -1,8 +1,8 @@
 package com.geronimomc.files;
 
 import com.geronimomc.Main;
+import com.google.gson.internal.$Gson$Types;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -46,4 +46,7 @@ public class CustomConfig {
         }
     }
 
+    public static void reload(){
+        customFile = YamlConfiguration.loadConfiguration(file);
+    }
 }
