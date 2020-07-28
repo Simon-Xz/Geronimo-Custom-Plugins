@@ -10,7 +10,7 @@ Prestige placeholder : %prisoncore_prestige%
 
 /rankup - Ranks the user up using the rank ladder coded in the plugin.
 
-  /rankup max - Ranks the user up using the rank ladder coded in the plugin just faster.
+      /rankup max - Ranks the user up using the rank ladder coded in the plugin just faster.
   
 /prestige - Resets the user back to the first rank in the ladder and allows them to do it again but for more money.
  
