@@ -5,6 +5,7 @@ api-version: 1.14
 authors: [Simon_Xz]
 description: PrisonCore
 website: https://discord.geronimomc.com
+softdepend: [PlaceholderAPI]
 
 commands:
   help:
