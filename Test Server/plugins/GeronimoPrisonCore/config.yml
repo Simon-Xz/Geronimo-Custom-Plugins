@@ -1,0 +1,16 @@
+help-line-one: '&6&lGeronimoMC'
+help-line-two: '&eClick to select a help option...'
+help-line-three: '&r'
+help-line-four: '&6* &eFound a server issue/bug'
+help-line-four-hover: '&6Click to select!'
+help-line-four-clickevent: https://discord.geronimomc.com
+help-line-five: '&6* &eReport rule breakers'
+help-line-five-hover: '&6Click to select!'
+help-line-five-clickevent: https://discord.geronimomc.com
+help-line-six: '&6* &eAsk a payment question'
+help-line-six-hover: '&6Click to select!'
+help-line-six-clickevent: https://discord.geronimomc.com
+help-line-seven: ''
+help-line-eight: '&eNeed more help? Vist &6our forums.'
+help-line-eight-hover: '&6Click to select!'
+help-line-eight-clickevent: https://forums.geronimomc.com

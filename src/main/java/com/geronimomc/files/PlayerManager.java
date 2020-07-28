@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PlayerManager implements Listener {
-    Plugin plugin = (Plugin)Main.getPlugin(Main.class);
+    Plugin plugin = Main.getPlugin(Main.class);
 
     @EventHandler
     public void createConfig(PlayerJoinEvent e) {

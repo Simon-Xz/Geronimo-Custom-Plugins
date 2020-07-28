@@ -8,19 +8,19 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class CustomConfig {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main Plugin = Main.getPlugin(Main.class);
 
     private static File file;
 
     private static FileConfiguration customFile;
 
     public static void setup() {
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("CustomHelp").getDataFolder(), "config.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("GeronimoPrisonCore").getDataFolder(), "config.yml");
         if (!file.exists())
             try {
                 file.createNewFile();
             } catch (IOException iOException) {}
-        customFile = (FileConfiguration)YamlConfiguration.loadConfiguration(file);
+        customFile = YamlConfiguration.loadConfiguration(file);
     }
 
     public static FileConfiguration get() {
@@ -36,6 +36,6 @@ public class CustomConfig {
     }
 
     public static void reload() {
-        customFile = (FileConfiguration)YamlConfiguration.loadConfiguration(file);
+        customFile = YamlConfiguration.loadConfiguration(file);
     }
 }

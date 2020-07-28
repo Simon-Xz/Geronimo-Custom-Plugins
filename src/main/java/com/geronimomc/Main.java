@@ -30,9 +30,9 @@ public final class Main extends JavaPlugin implements Listener {
         getCommand("rankup").setExecutor(new Rankup());
         getCommand("prestige").setExecutor(new Prestige());
 
+        Bukkit.getServer().getPluginManager().registerEvents(new CustomHelp(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new LoginMessage(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(this, this);
         Bukkit.getServer().getPluginManager().registerEvents(new Rankup(), this);
         getServer().getPluginManager().registerEvents(new PlayerManager(), this);
 
@@ -45,7 +45,6 @@ public final class Main extends JavaPlugin implements Listener {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         loadConfigManager();
-
         CustomConfig.setup();
         CustomConfig.get().addDefault("help-line-one", "&6&lGeronimoMC");
         CustomConfig.get().addDefault("help-line-two", "&eClick to select a help option...");
