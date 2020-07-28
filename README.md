@@ -2,6 +2,7 @@
 
 ## Placeholders
 Rank placeholder : %prisoncore_rank%
+
 Prestige placeholder : %prisoncore_prestige%
 
 ## Commands
