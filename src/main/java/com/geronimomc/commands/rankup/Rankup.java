@@ -1,6 +1,7 @@
 package com.geronimomc.commands.rankup;
 
 import com.geronimomc.Main;
+import com.geronimomc.api.Api;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -30,7 +31,7 @@ public class Rankup implements CommandExecutor, Listener {
                 doRankup(p);
             }else {
                 if(args[0].equals("max")) {
-                    int rank = Main.cfgm.getPlayers().getInt("Players." + p.getUniqueId().toString() +  ".Rank");
+                    int rank = Api.getRank(p);
                     int ranksleft = 10 - rank;
                     if(ranksleft > 0) {
                         new BukkitRunnable() {
