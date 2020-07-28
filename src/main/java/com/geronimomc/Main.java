@@ -1,22 +1,26 @@
 package com.geronimomc;
 
 import com.geronimomc.commands.CustomHelp;
-import com.geronimomc.commands.Rankup;
+import com.geronimomc.commands.rankup.Prestige;
+import com.geronimomc.commands.rankup.Rankup;
 import com.geronimomc.commands.Reload;
+import com.geronimomc.files.ConfigManager;
 import com.geronimomc.files.CustomConfig;
+import com.geronimomc.files.PlayerManager;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.security.Permission;
 
-public final class Main extends JavaPlugin {
+public final class Main extends JavaPlugin implements Listener {
 
     private static Economy econ = null;
     private static Chat chat = null;
+    public static ConfigManager cfgm;
     private static Permission perms = null;
 
     @Override
@@ -25,10 +29,14 @@ public final class Main extends JavaPlugin {
         this.getCommand("help").setExecutor(new CustomHelp());
         this.getCommand("grcore").setExecutor(new Reload());
         this.getCommand("rankup").setExecutor(new Rankup());
+        this.getCommand("prestige").setExecutor(new Prestige());
 
         //Join Leave messages ect
         Bukkit.getServer().getPluginManager().registerEvents(new LoginMessage(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(this,this);
+        Bukkit.getServer().getPluginManager().registerEvents(new Rankup(), this);
+        getServer().getPluginManager().registerEvents(new PlayerManager(), this);
 
         //Setup Econ
         if (!setupEconomy() ) {
@@ -36,14 +44,11 @@ public final class Main extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        //setup perms
-        setupPermissions();
-        //setup chat
-        setupChat();
 
         //sorting config stuff out
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        loadConfigManager();
 
 
         //Settings up config
@@ -72,11 +77,16 @@ public final class Main extends JavaPlugin {
     }
 
 
-
     @Override
     public void onDisable() {
         getLogger().info("");
         // Plugin shutdown logic
+    }
+
+    // Player config creator
+    public void loadConfigManager() {
+        cfgm = new ConfigManager();
+        cfgm.setupPlayers();
     }
 
     //Vault API
@@ -92,28 +102,8 @@ public final class Main extends JavaPlugin {
         return econ != null;
     }
 
-    private boolean setupChat() {
-        RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
-        chat = rsp.getProvider();
-        return chat != null;
-    }
-
-    private boolean setupPermissions() {
-        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        perms = rsp.getProvider();
-        return perms != null;
-    }
-
     public static Economy getEconomy() {
         return econ;
-    }
-
-    public static Permission getPermissions() {
-        return perms;
-    }
-
-    public static Chat getChat(){
-        return chat;
     }
 
 }

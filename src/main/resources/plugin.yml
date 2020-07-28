@@ -1,9 +1,9 @@
-name: CustomHelp
+name: GeronimoPrisonCore
 version: ${project.version}
 main: com.geronimomc.Main
 api-version: 1.14
 authors: [Simon_Xz]
-description: Custom Help
+description: PrisonCore
 website: https://discord.geronimomc.com
 
 commands:
@@ -12,4 +12,10 @@ commands:
     usage: /<command>
   grcore:
     description: Reloads the config
+    usage: /<command>
+  rankup:
+    description: allows the user the progress through the prison ranks
+    usage: /<command>
+  prestige:
+    description: allows the user to prestige and rankup again
     usage: /<command>
