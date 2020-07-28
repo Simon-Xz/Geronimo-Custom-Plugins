@@ -19,6 +19,23 @@ public class Api {
         }
     }
 
-
+    /**
+     *
+     * API SUPPORT FOR PRESTIGES COMING VERY SOON
+     *
+     *
+     */
+//    public static int getPrestige(Player p) {
+//        return getPrestige(Bukkit.getOfflinePlayer(p.getUniqueId()));
+//    }
+//
+//    public static int getPrestige(OfflinePlayer p) {
+//        try {
+//            return Main.cfgm.getPlayers().getInt("Players." + p.getUniqueId().toString() + ".Prestige");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return 0;
+//        }
+//    }
 
 }

@@ -1,6 +1,7 @@
 // https://tryitands.ee/
 package com.geronimomc;
 
+import com.geronimomc.api.Api;
 import com.geronimomc.commands.CustomHelp;
 import com.geronimomc.commands.Reload;
 import com.geronimomc.commands.rankup.Prestige;
@@ -13,10 +14,15 @@ import java.lang.reflect.Field;
 import java.security.Permission;
 import java.util.HashMap;
 import java.util.logging.Logger;
+
+import me.clip.placeholderapi.PlaceholderAPI;
+import me.clip.placeholderapi.PlaceholderHook;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -50,6 +56,14 @@ public final class Main extends JavaPlugin implements Listener {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            Bukkit.getPluginManager().registerEvents(this, this);
+        } else {
+            throw new RuntimeException("Could not find PlaceholderAPI!! Plugin can not work without it!");
+        }
+
+        registerPlaceholders();
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
@@ -104,7 +118,33 @@ public final class Main extends JavaPlugin implements Listener {
         return plugin;
     }
 
+    //PLACEHOLDER API SUPPORT
 
-
-
+    public void registerPlaceholders() {
+        PlaceholderAPI.registerPlaceholderHook("prisoncore", new PlaceholderHook() {
+            @Override
+            public String onRequest(OfflinePlayer p, String params) {
+                if(p != null && p.isOnline()) {
+                    return onPlaceholderRequest(p.getPlayer(), params);
+                }
+                return null;
+            }
+            @Override
+            public String onPlaceholderRequest(Player p, String params) {
+                if(p == null) {
+                    return null;
+                }
+                if(params.equalsIgnoreCase("prestige")) {
+                    String prestige = cfgm.getPlayers().getString("Players." + p.getUniqueId().toString() + ".Prestige");
+                    return prestige;
+                }
+                if(params.equalsIgnoreCase("rank")) {
+                    int rank = Api.getRank(p);
+                    String a = Rankup.rankName(p, rank);
+                    return a;
+                }
+                return null;
+            }
+        });
+    }
 }
