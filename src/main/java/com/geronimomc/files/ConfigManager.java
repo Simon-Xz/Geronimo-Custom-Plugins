@@ -1,57 +1,50 @@
 package com.geronimomc.files;
 
 import com.geronimomc.Main;
+import java.io.File;
+import java.io.IOException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
-
 public class ConfigManager {
-
-    private Main plugin = Main.getPlugin(Main.class);
+    private Main plugin = (Main)Main.getPlugin(Main.class);
 
     public FileConfiguration playerscfg;
+
     public File playersfile;
 
     public void setupPlayers() {
-        if(!plugin.getDataFolder().exists()); {
-            plugin.getDataFolder().mkdir();
-        }
-
-        playersfile = new File(plugin.getDataFolder(), "players.yml");
-
-        if(!playersfile.exists()) {
+        if (!this.plugin.getDataFolder().exists());
+        this.plugin.getDataFolder().mkdir();
+        this.playersfile = new File(this.plugin.getDataFolder(), "players.yml");
+        if (!this.playersfile.exists())
             try {
-                playersfile.createNewFile();
+                this.playersfile.createNewFile();
             } catch (IOException e) {
                 Bukkit.getServer().getConsoleSender()
                         .sendMessage(ChatColor.RED + "Couldn't create players.yml file.");
             }
-        }
-
-        playerscfg = YamlConfiguration.loadConfiguration(playersfile);
+        this.playerscfg = (FileConfiguration)YamlConfiguration.loadConfiguration(this.playersfile);
         Bukkit.getServer().getConsoleSender()
                 .sendMessage(ChatColor.GREEN + "players.yml file has been created");
     }
 
     public FileConfiguration getPlayers() {
-        return playerscfg;
+        return this.playerscfg;
     }
 
     public void savePlayers() {
         try {
-            playerscfg.save(playersfile);
-        }catch (IOException e) {
+            this.playerscfg.save(this.playersfile);
+        } catch (IOException e) {
             Bukkit.getServer().getConsoleSender()
                     .sendMessage(ChatColor.RED + "Couldn't save players.yml file.");
         }
     }
 
     public void reloadPlayers() {
-        playerscfg = YamlConfiguration.loadConfiguration(playersfile);
+        this.playerscfg = (FileConfiguration)YamlConfiguration.loadConfiguration(this.playersfile);
     }
-
 }

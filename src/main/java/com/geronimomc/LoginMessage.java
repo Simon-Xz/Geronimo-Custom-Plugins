@@ -7,14 +7,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import javax.xml.bind.Marshaller;
-
 public class LoginMessage implements Listener {
-
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e){
+    public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        if(p.hasPermission("core.login.default")) {
+        if (p.hasPermission("core.login.default")) {
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8&m&l--------------------------------------------------"));
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', "  &8>> &fWelcome back, &6" + p.getDisplayName() + " &fto the &6&lGeronimoMC &fserver"));
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', "  &8>> &fWebsite: &6forums.geronimomc.com"));
