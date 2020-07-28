@@ -1,9 +1,9 @@
 # Geronimo-Custom-Plugins
 
 ## Placeholders
-Rank placeholder : %prisoncore_rank%
+Rank placeholder :      %prisoncore_rank%
 
-Prestige placeholder : %prisoncore_prestige%
+Prestige placeholder :  %prisoncore_prestige%
 
 ## Commands
 /help - Displays custom help (changeable in config).
