@@ -151,29 +151,9 @@ public final class Main extends JavaPlugin implements Listener {
                     String a = Rankup.rankName(p, rank);
                     return a;
                 }
-                if (params.equalsIgnoreCase("rankpercent")) {
-                    int rank = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Rank");
-                    int prestige = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Prestige") + 1;
-                    double p_bal = econ.getBalance(p);
-                    long rankcost = 0;
-                    if (prestige < 1) {
-                        rankcost = Rankup.rankCost(p, rank);
-                    } else {
-                        rankcost = Rankup.rankCost(p, rank) * prestige;
-                    }
-                    double percentage = (p_bal / rankcost) * 100;
-                    if (percentage >= 100) {
-                        percentage = 100.00;
-                    }
-                    DecimalFormat round = new DecimalFormat("#.##");
-                    round.setRoundingMode(RoundingMode.HALF_DOWN);
-
-                    return round.format(percentage) + "%";
-
-                }
                 if (params.equalsIgnoreCase("rankbar")) {
-                    int rank = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Rank");
-                    int prestige = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Prestige") + 1;
+                    int rank = Api.getRank(p);
+                    int prestige = Integer.parseInt(cfgm.getPlayers().getString("Players." + p.getUniqueId().toString() + ".Prestige") + 1);
                     double p_bal = econ.getBalance(p);
                     long rankcost = 0;
                     if (prestige < 1) {
@@ -188,17 +168,18 @@ public final class Main extends JavaPlugin implements Listener {
                     DecimalFormat round = new DecimalFormat("#.##");
                     round.setRoundingMode(RoundingMode.HALF_DOWN);
 
-                    if(percentage >= 100) { String bar = "&a||||||||||"; }
-                    else if(percentage >= 90 && percentage < 100) { String bar = "&a|||||||||&7|"; }
-                    else if(percentage >= 80 && percentage < 90) { String bar = "&a||||||||&7||"; }
-                    else if(percentage >= 70 && percentage < 80) { String bar = "&a|||||||&7|||"; }
-                    else if(percentage >= 60 && percentage < 70) { String bar = "&a|||||||&7|||"; }
-                    else if(percentage >= 50 && percentage < 60) { String bar = "&a||||||&7||||"; }
-                    else if(percentage >= 40 && percentage < 50) { String bar = "&a|||||&7|||||"; }
-                    else if(percentage >= 30 && percentage < 40) { String bar = "&a||||&7||||||"; }
-                    else if(percentage >= 20 && percentage < 30) { String bar = "&a|||&7|||||||"; }
-                    else if(percentage >= 10 && percentage < 20) { String bar = "&a||&7||||||||"; }
-                    else if(percentage >= 0 && percentage < 10) { String bar = "&a|&7|||||||||"; }
+                    String bar = "";
+                    if(percentage >= 100) { bar = "&a||||||||||"; }
+                    else if(percentage >= 90 && percentage < 100) { bar = "&a|||||||||&7|"; }
+                    else if(percentage >= 80 && percentage < 90) { bar = "&a||||||||&7||"; }
+                    else if(percentage >= 70 && percentage < 80) { bar = "&a|||||||&7|||"; }
+                    else if(percentage >= 60 && percentage < 70) { bar = "&a|||||||&7|||"; }
+                    else if(percentage >= 50 && percentage < 60) { bar = "&a||||||&7||||"; }
+                    else if(percentage >= 40 && percentage < 50) { bar = "&a|||||&7|||||"; }
+                    else if(percentage >= 30 && percentage < 40) { bar = "&a||||&7||||||"; }
+                    else if(percentage >= 20 && percentage < 30) { bar = "&a|||&7|||||||"; }
+                    else if(percentage >= 10 && percentage < 20) { bar = "&a||&7||||||||"; }
+                    else if(percentage >= 0 && percentage < 10) { bar = "&a|&7|||||||||"; }
 
                     return bar + " " + round.format(percentage) + "%";
 
