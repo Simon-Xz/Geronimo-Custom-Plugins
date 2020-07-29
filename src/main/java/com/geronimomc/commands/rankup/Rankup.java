@@ -21,6 +21,7 @@ public class Rankup implements CommandExecutor, Listener {
 
     Plugin plugin = Main.getPlugin(Main.class);
 
+
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 
         if(cmd.getName().equalsIgnoreCase("rankup") && sender instanceof Player){
@@ -49,7 +50,7 @@ public class Rankup implements CommandExecutor, Listener {
                     }
                 }
                 else {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lIncorrect arguments: &f/rankup [max/ranks]"));
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lIncorrect arguments: &f/rankup [max]"));
                 }
             }
 

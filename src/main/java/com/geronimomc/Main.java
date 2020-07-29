@@ -6,6 +6,7 @@ import com.geronimomc.commands.CustomHelp;
 import com.geronimomc.commands.Reload;
 import com.geronimomc.commands.rankup.Prestige;
 import com.geronimomc.commands.rankup.Rankup;
+import com.geronimomc.commands.rankup.list.Ranks;
 import com.geronimomc.files.ConfigManager;
 import com.geronimomc.files.CustomConfig;
 import com.geronimomc.files.PlayerManager;
@@ -43,13 +44,15 @@ public final class Main extends JavaPlugin implements Listener {
         getCommand("grcore").setExecutor(new Reload());
         getCommand("rankup").setExecutor(new Rankup());
         getCommand("prestige").setExecutor(new Prestige());
+        getCommand("ranks").setExecutor(new Ranks());
 
-        Bukkit.getServer().getPluginManager().registerEvents(new CustomHelp(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new LoginMessage(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new Rankup(), this);
+        getServer().getPluginManager().registerEvents(new CustomHelp(), this);
+        getServer().getPluginManager().registerEvents(new LoginMessage(), this);
+        getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
+        getServer().getPluginManager().registerEvents(new Rankup(), this);
         getServer().getPluginManager().registerEvents(new PlayerManager(), this);
         getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(new Rankup(), this);
 
         if (!setupEconomy()) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", new Object[] { getDescription().getName() }));

@@ -20,3 +20,6 @@ commands:
   prestige:
     description: allows the user to prestige and rankup again
     usage: /<command>
+  ranks:
+    description: Displays the list of ranks gainable by the user
+    usage: /<command>
