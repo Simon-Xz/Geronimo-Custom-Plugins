@@ -12,7 +12,9 @@ import com.geronimomc.files.CustomConfig;
 import com.geronimomc.files.PlayerManager;
 
 import java.lang.reflect.Field;
+import java.math.RoundingMode;
 import java.security.Permission;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -137,20 +139,74 @@ public final class Main extends JavaPlugin implements Listener {
             }
             @Override
             public String onPlaceholderRequest(Player p, String params) {
-                if(p == null) {
+                if (p == null) {
                     return null;
                 }
-                if(params.equalsIgnoreCase("prestige")) {
+                if (params.equalsIgnoreCase("prestige")) {
                     String prestige = cfgm.getPlayers().getString("Players." + p.getUniqueId().toString() + ".Prestige");
                     return prestige;
                 }
-                if(params.equalsIgnoreCase("rank")) {
+                if (params.equalsIgnoreCase("rank")) {
                     int rank = Api.getRank(p);
                     String a = Rankup.rankName(p, rank);
                     return a;
                 }
+                if (params.equalsIgnoreCase("rankpercent")) {
+                    int rank = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Rank");
+                    int prestige = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Prestige") + 1;
+                    double p_bal = econ.getBalance(p);
+                    long rankcost = 0;
+                    if (prestige < 1) {
+                        rankcost = Rankup.rankCost(p, rank);
+                    } else {
+                        rankcost = Rankup.rankCost(p, rank) * prestige;
+                    }
+                    double percentage = (p_bal / rankcost) * 100;
+                    if (percentage >= 100) {
+                        percentage = 100.00;
+                    }
+                    DecimalFormat round = new DecimalFormat("#.##");
+                    round.setRoundingMode(RoundingMode.HALF_DOWN);
+
+                    return round.format(percentage) + "%";
+
+                }
+                if (params.equalsIgnoreCase("rankbar")) {
+                    int rank = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Rank");
+                    int prestige = getConfig().getInt("Players." + p.getUniqueId().toString() + ".Prestige") + 1;
+                    double p_bal = econ.getBalance(p);
+                    long rankcost = 0;
+                    if (prestige < 1) {
+                        rankcost = Rankup.rankCost(p, rank);
+                    } else {
+                        rankcost = Rankup.rankCost(p, rank) * prestige;
+                    }
+                    double percentage = (p_bal / rankcost) * 100;
+                    if (percentage >= 100) {
+                        percentage = 100.00;
+                    }
+                    DecimalFormat round = new DecimalFormat("#.##");
+                    round.setRoundingMode(RoundingMode.HALF_DOWN);
+
+                    if(percentage >= 100) { String bar = "&a||||||||||"; }
+                    else if(percentage >= 90 && percentage < 100) { String bar = "&a|||||||||&7|"; }
+                    else if(percentage >= 80 && percentage < 90) { String bar = "&a||||||||&7||"; }
+                    else if(percentage >= 70 && percentage < 80) { String bar = "&a|||||||&7|||"; }
+                    else if(percentage >= 60 && percentage < 70) { String bar = "&a|||||||&7|||"; }
+                    else if(percentage >= 50 && percentage < 60) { String bar = "&a||||||&7||||"; }
+                    else if(percentage >= 40 && percentage < 50) { String bar = "&a|||||&7|||||"; }
+                    else if(percentage >= 30 && percentage < 40) { String bar = "&a||||&7||||||"; }
+                    else if(percentage >= 20 && percentage < 30) { String bar = "&a|||&7|||||||"; }
+                    else if(percentage >= 10 && percentage < 20) { String bar = "&a||&7||||||||"; }
+                    else if(percentage >= 0 && percentage < 10) { String bar = "&a|&7|||||||||"; }
+
+                    return bar + " " + round.format(percentage) + "%";
+
+                }
+
                 return null;
             }
+
         });
     }
 }

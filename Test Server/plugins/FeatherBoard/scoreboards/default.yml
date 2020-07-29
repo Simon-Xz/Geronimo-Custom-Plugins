@@ -64,7 +64,7 @@ lines:
   # These lines (usually a header or footer) are also good for decoration.
   header:
     frames:
-    - '{placeholderapi_prisoncore_rank}'
+    - '{placeholderapi_prisoncore_rankbar}'
     interval: 10
     random: true
   player-label:
