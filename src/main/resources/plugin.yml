@@ -23,3 +23,6 @@ commands:
   ranks:
     description: Displays the list of ranks gainable by the user
     usage: /<command>
+  prestigetop:
+    description: Shows top 5 players on prestiges
+    usage: /<command>

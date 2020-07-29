@@ -16,6 +16,7 @@ import java.security.Permission;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
+import com.geronimomc.leaderboard.PrestigeTop;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderHook;
 import net.milkbowl.vault.economy.Economy;
@@ -45,6 +46,7 @@ public final class Main extends JavaPlugin implements Listener {
         getCommand("rankup").setExecutor(new Rankup());
         getCommand("prestige").setExecutor(new Prestige());
         getCommand("ranks").setExecutor(new Ranks());
+        getCommand("prestigetop").setExecutor(new PrestigeTop());
 
         getServer().getPluginManager().registerEvents(new CustomHelp(), this);
         getServer().getPluginManager().registerEvents(new LoginMessage(), this);
@@ -53,6 +55,7 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new PlayerManager(), this);
         getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Rankup(), this);
+        getServer().getPluginManager().registerEvents(new PrestigeTop(), this);
 
         if (!setupEconomy()) {
             log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", new Object[] { getDescription().getName() }));

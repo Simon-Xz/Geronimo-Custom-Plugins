@@ -1,10 +1,7 @@
 package com.geronimomc.commands.rankup;
 
 import com.geronimomc.Main;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,6 +32,7 @@ public class Prestige implements CommandExecutor {
             p.getWorld().spawnParticle(Particle.FLAME, loc, 40, 0.5D, 0.5D, 0.5D, 0.0D);
             p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10.0F, 1.0F);
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You were promoted to &f&lPrestige " + new_prestige + "&7!"));
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "bc test");
         } else {
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lError&8: &7You must have the rank &c&lX &7to prestige."));
         }
