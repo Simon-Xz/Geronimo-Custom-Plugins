@@ -26,7 +26,7 @@ public class ConfigManager {
                 Bukkit.getServer().getConsoleSender()
                         .sendMessage(ChatColor.RED + "Couldn't create players.yml file.");
             }
-        this.playerscfg = (FileConfiguration)YamlConfiguration.loadConfiguration(this.playersfile);
+        this.playerscfg = YamlConfiguration.loadConfiguration(this.playersfile);
         Bukkit.getServer().getConsoleSender()
                 .sendMessage(ChatColor.GREEN + "players.yml file has been created");
     }
@@ -45,6 +45,6 @@ public class ConfigManager {
     }
 
     public void reloadPlayers() {
-        this.playerscfg = (FileConfiguration)YamlConfiguration.loadConfiguration(this.playersfile);
+        this.playerscfg = YamlConfiguration.loadConfiguration(this.playersfile);
     }
 }
