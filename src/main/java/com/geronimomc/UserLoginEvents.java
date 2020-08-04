@@ -4,15 +4,19 @@ import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class LoginMessage implements Listener {
+import java.util.ArrayList;
+
+public class UserLoginEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
@@ -28,37 +32,26 @@ public class LoginMessage implements Listener {
             if(p.hasPermission("core.rank.default")) {
                 ItemStack pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
                 ItemMeta pickaxeMeta = pickaxe.getItemMeta();
-                pickaxeMeta.setDisplayName("Default");
+                pickaxeMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&7&lMember"));
+                pickaxeMeta.addEnchant(Enchantment.DIG_SPEED,15, true);
+                pickaxeMeta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS,15, true);
+                pickaxeMeta.addEnchant(Enchantment.DURABILITY, 15, true);
+                pickaxeMeta.isUnbreakable();
+                pickaxeMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                pickaxeMeta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+
+                ArrayList<String> pickaxeLore = new ArrayList<String>();
+                pickaxeLore.add(ChatColor.translateAlternateColorCodes('&', "&6Item Info:"));
+                pickaxeLore.add(ChatColor.RED + "Omnitool");
+                pickaxeLore.add(ChatColor.RED + "Unbreakable");
+                pickaxeLore.add(" ");
+                pickaxeLore.add(ChatColor.GOLD + "Enchants:");
+                pickaxeLore.add(ChatColor.translateAlternateColorCodes('&', " &7Efficiency " + pickaxeMeta.getEnchantLevel(Enchantment.DIG_SPEED)));
+                pickaxeMeta.setLore(pickaxeLore);
 
                 pickaxe.setItemMeta(pickaxeMeta);
 
                 p.getInventory().setItem(1, pickaxe);
-            }
-            if(p.hasPermission("core.rank.merchant")) {
-                ItemStack merchant = new ItemStack(Material.DIAMOND_PICKAXE);
-                ItemMeta merchantMeta = merchant.getItemMeta();
-                merchantMeta.setDisplayName("Merchant");
-
-                merchant.setItemMeta(merchantMeta);
-                p.getInventory().setItem(1, merchant);
-            }
-            if(p.hasPermission("core.rank.warrior")) {
-
-            }
-            if(p.hasPermission("core.rank.noble")) {
-
-            }
-            if(p.hasPermission("core.rank.earl")) {
-
-            }
-            if(p.hasPermission("core.rank.titan")) {
-
-            }
-            if(p.hasPermission("core.rank.divine")) {
-
-            }
-            if(p.hasPermission("core.rank.geronimo")) {
-                
             }
         }
     }

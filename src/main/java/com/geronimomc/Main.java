@@ -11,11 +11,9 @@ import com.geronimomc.files.ConfigManager;
 import com.geronimomc.files.CustomConfig;
 import com.geronimomc.files.PlayerManager;
 
-import java.lang.reflect.Field;
 import java.math.RoundingMode;
 import java.security.Permission;
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 import com.geronimomc.leaderboard.PrestigeTop;
@@ -23,9 +21,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderHook;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -51,7 +47,7 @@ public final class Main extends JavaPlugin implements Listener {
         getCommand("prestigetop").setExecutor(new PrestigeTop());
 
         getServer().getPluginManager().registerEvents(new CustomHelp(), this);
-        getServer().getPluginManager().registerEvents(new LoginMessage(), this);
+        getServer().getPluginManager().registerEvents(new UserLoginEvents(), this);
         getServer().getPluginManager().registerEvents(new JoinLeaveMessage(), this);
         getServer().getPluginManager().registerEvents(new Rankup(), this);
         getServer().getPluginManager().registerEvents(new PlayerManager(), this);
