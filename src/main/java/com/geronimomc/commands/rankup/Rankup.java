@@ -99,25 +99,25 @@ public class Rankup implements CommandExecutor, Listener {
         String a = null;
         //Select next rank
         if(rank == 1) {
-            a = "I";
+            a = "A";
         } else if(rank == 2) {
-            a = "II";
+            a = "B";
         } else if(rank == 3) {
-            a = "III";
+            a = "C";
         } else if(rank == 4) {
-            a = "IV";
+            a = "D";
         } else if(rank == 5) {
-            a = "V";
+            a = "E";
         } else if(rank == 6) {
-            a = "VI";
+            a = "F";
         } else if(rank == 7) {
-            a = "VII";
+            a = "G";
         } else if(rank == 8) {
-            a = "VIII";
+            a = "H";
         } else if(rank == 9) {
-            a = "IX";
+            a = "I";
         } else if(rank == 10) {
-            a = "X";
+            a = "J";
         }
         return a;
     }
