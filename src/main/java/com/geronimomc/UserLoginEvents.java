@@ -1,5 +1,6 @@
 package com.geronimomc;
 
+import com.geronimomc.files.CustomConfig;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,7 +36,7 @@ public class UserLoginEvents implements Listener {
                 ItemMeta pickaxeMeta = pickaxe.getItemMeta();
 
                 // SETTING PICKAXE NAME AND ENCHANTS
-                pickaxeMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&7&lMember"));
+                pickaxeMeta.setDisplayName(CustomConfig.get().getString("pickname-name").replace('&', '§'));
                 pickaxeMeta.addEnchant(Enchantment.DIG_SPEED,15, true);
                 pickaxeMeta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS,15, true);
                 pickaxeMeta.addEnchant(Enchantment.DURABILITY, 15, true);
@@ -61,5 +62,5 @@ public class UserLoginEvents implements Listener {
             }
         }
     }
-    
+
 }

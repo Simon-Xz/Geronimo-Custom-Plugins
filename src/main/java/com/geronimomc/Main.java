@@ -89,6 +89,7 @@ public final class Main extends JavaPlugin implements Listener {
         CustomConfig.get().addDefault("help-line-eight", "&eNeed more help? Vist &6our forums.");
         CustomConfig.get().addDefault("help-line-eight-hover", "&6Click to select!");
         CustomConfig.get().addDefault("help-line-eight-clickevent", "https://forums.geronimomc.com");
+        CustomConfig.get().addDefault("pickaxe-name", "&&6&lOmnitool");
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
     }
