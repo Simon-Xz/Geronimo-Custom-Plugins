@@ -36,7 +36,7 @@ public class UserLoginEvents implements Listener {
                 ItemMeta pickaxeMeta = pickaxe.getItemMeta();
 
                 // SETTING PICKAXE NAME AND ENCHANTS
-                pickaxeMeta.setDisplayName(CustomConfig.get().getString("pickname-name").replace('&', '§'));
+                pickaxeMeta.setDisplayName(CustomConfig.get().getString("pickaxe-name").replace('&', '§'));
                 pickaxeMeta.addEnchant(Enchantment.DIG_SPEED,15, true);
                 pickaxeMeta.addEnchant(Enchantment.LOOT_BONUS_BLOCKS,15, true);
                 pickaxeMeta.addEnchant(Enchantment.DURABILITY, 15, true);

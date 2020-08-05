@@ -1,6 +1,7 @@
 package com.geronimomc.commands.rankup.list;
 
 import com.geronimomc.api.Api;
+import com.geronimomc.commands.rankup.Prestige;
 import com.geronimomc.commands.rankup.Rankup;
 import net.milkbowl.vault.chat.Chat;
 import org.bukkit.ChatColor;
@@ -22,9 +23,9 @@ public class Ranks implements CommandExecutor, Listener {
                 p.sendMessage("");
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l&nRank List"));
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7&oDoes not show updated prices for prestiges"));
-                for(int i = 1; i < 27; ++i){
+                for(int i = 1; i < 26; ++i){
                     String ranklist = Rankup.rankName(p, i);
-                    Long rankcost = Rankup.rankCost(p, i);
+                    Long rankcost = Rankup.rankCost(p, i) + Rankup.charge;
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("&6" + ranklist + " &e$" + NumberFormat.getNumberInstance().format(rankcost))));
                 }
                 p.sendMessage("");

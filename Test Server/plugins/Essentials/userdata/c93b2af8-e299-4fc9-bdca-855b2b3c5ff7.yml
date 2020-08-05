@@ -1,13 +1,13 @@
 lastAccountName: Simon_Xz
 timestamps:
-  login: 1596585385280
-  logout: 1596621620899
+  login: 1596643850133
+  logout: 1596644631631
 ipAddress: 127.0.0.1
 logoutlocation:
   world: world
-  x: 29.727985930621003
-  y: 72.0
-  z: -67.04236754031535
-  yaw: -194.80302
-  pitch: 22.732815
+  x: 26.166449656546053
+  y: 72.20000004768372
+  z: -61.48932334630751
+  yaw: 201.13159
+  pitch: 13.814369
 money: '825980'

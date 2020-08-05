@@ -118,6 +118,38 @@ public class Rankup implements CommandExecutor, Listener {
             a = "I";
         } else if(rank == 10) {
             a = "J";
+        } else if(rank == 11) {
+            a = "K";
+        } else if(rank == 12) {
+            a = "L";
+        } else if(rank == 13) {
+            a = "M";
+        } else if(rank == 14) {
+            a = "N";
+        } else if(rank == 15) {
+            a = "O";
+        } else if(rank == 16) {
+            a = "P";
+        } else if(rank == 17) {
+            a = "Q";
+        } else if(rank == 18) {
+            a = "R";
+        } else if(rank == 19) {
+            a = "S";
+        } else if(rank == 20) {
+            a = "T";
+        } else if(rank == 21) {
+            a = "U";
+        } else if(rank == 22) {
+            a = "V";
+        } else if(rank == 23) {
+            a = "W";
+        } else if(rank == 23) {
+            a = "X";
+        } else if(rank == 24) {
+            a = "Y";
+        } else if(rank == 25) {
+            a = "Z";
         }
         return a;
     }
@@ -144,6 +176,36 @@ public class Rankup implements CommandExecutor, Listener {
             a = 300000000;
         } else if(rank == 10) {
             a = 800000000;
+        } else if(rank == 11) {
+            a = 0;
+        } else if(rank == 12) {
+            a = 0;
+        } else if(rank == 13) {
+            a = 0;
+        } else if(rank == 14) {
+            a = 0;
+        } else if(rank == 15) {
+            a = 0;
+        } else if(rank == 16) {
+            a = 0;
+        } else if(rank == 17) {
+            a = 0;
+        } else if(rank == 18) {
+            a = 0;
+        } else if(rank == 19) {
+            a = 0;
+        } else if(rank == 20) {
+            a = 0;
+        } else if(rank == 21) {
+            a = 0;
+        } else if(rank == 22) {
+            a = 0;
+        } else if(rank == 23) {
+            a = 0;
+        } else if(rank == 24) {
+            a = 0;
+        } else if(rank == 25) {
+            a = 0;
         }
         return a;
     }
