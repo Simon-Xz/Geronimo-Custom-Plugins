@@ -61,9 +61,5 @@ public class UserLoginEvents implements Listener {
             }
         }
     }
-
-    @EventHandler
-    public void onToolUse(BlockBreakEvent e) {
-        e.getPlayer().getItemOnCursor().setDurability((short) -10);
-    }
+    
 }
