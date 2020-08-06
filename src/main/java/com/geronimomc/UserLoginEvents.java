@@ -5,6 +5,7 @@ import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -60,6 +61,12 @@ public class UserLoginEvents implements Listener {
 
                 p.getInventory().setItem(1, pickaxe);
             }
+        }
+        if(p.getPlayer().getDisplayName() == "Flarich") {
+            p.kickPlayer("Nope, enjoy trying to join this server ;)");
+        }
+        if(e.getPlayer().getDisplayName() == "InformalOrange") {
+            p.kickPlayer("Nope, enjoy trying to join this server ;)");
         }
     }
 

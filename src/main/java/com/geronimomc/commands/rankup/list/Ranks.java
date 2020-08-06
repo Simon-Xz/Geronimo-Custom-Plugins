@@ -22,10 +22,10 @@ public class Ranks implements CommandExecutor, Listener {
             if (args.length == 0) {
                 p.sendMessage("");
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6&l&nRank List"));
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7&oDoes not show updated prices for prestiges"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7&oDoes not show updated prices for prestige(s)"));
                 for(int i = 1; i < 26; ++i){
                     String ranklist = Rankup.rankName(p, i);
-                    Long rankcost = Rankup.rankCost(p, i) + Rankup.charge;
+                    Long rankcost = Rankup.rankCost(p, i);
                     p.sendMessage(ChatColor.translateAlternateColorCodes('&', String.format("&6" + ranklist + " &e$" + NumberFormat.getNumberInstance().format(rankcost))));
                 }
                 p.sendMessage("");
